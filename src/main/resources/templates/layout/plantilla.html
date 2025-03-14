@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:fragment="head">
+        <title>American Shop</title>
+        <meta charset="UTF-8"/>
+
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    </head>
+    <body>
+
+        <header th:fragment="header" class="header">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-primary p-4">
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand"><i class="fas fa-cog"></i>Home</a>
+                    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+
+        <section th:fragment="productos" >
+            <div class="card position-relative" style="width: 18rem;">
+                <img src="https://multienviosexpress.com/wp-content/uploads/2022/05/compras-online-1200x640.jpg" class="card-img-top" alt="...."/>
+                <a href="#" class="btn btn-primary position-absolute top-50 start-50 translate-middle" >productos vendidos</a>
+            </div>
+
+        </section>
+
+        <section th:fragment="redes" >
+            <div class="card" style="width: 18rem;">
+                <a href="#" class="btn btn-primary" th:href="@{/redes/listado}">Redes Sociales</a>
+            </div>
+
+        </section>
+
+
+        <section th:fragment="categoria" >
+            <div class="card position-relative top-50 start-50 translate-middle" style="width: 18rem;">
+                <img src="https://www.idiomasparaninos.com/images/es/ropa.png" class="card-img-top" alt="...."/>
+                <a href="#" class="btn btn-primary position-absolute top-50 start-50 translate-middle" th:href="@{/pruebas/listado}">Categorias</a>
+            </div>
+
+        </section>
+
+        <section th:fragment="informacion" >
+            <div class="card" style="width: 18rem;">
+                <img src="https://static.vecteezy.com/system/resources/previews/006/445/961/non_2x/store-location-black-glyph-icon-physical-shop-position-website-information-market-address-online-shopping-silhouette-symbol-on-white-space-solid-pictogram-isolated-illustration-vector.jpg" class="card-img-top" alt="...."/>
+                <a href="#" class="btn btn-primary" th:href="rede.html">Informacion de la tienda</a>
+            </div>
+
+        </section>
+
+
+
+
+
+        <footer th:fragment="footer" class="p-2 mt-5 bg-primary text-white">
+            <p class="text-center lead"> &COPY; Derechos reservados de la tienda </p>
+
+        </footer>
+
+    </body>
+</html>
