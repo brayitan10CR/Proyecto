@@ -80,11 +80,10 @@ create table venta (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-/*Se insertan 3 registros en la tabla cliente como ejemplo */
+/*Se insertan 2 registros en la tabla cliente como ejemplo */
 INSERT INTO usuario (id_usuario, username,password,nombre, apellidos, correo, telefono,ruta_imagen,activo) VALUES 
-(1,'juan','$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.','Juan', 'Castro Mora',    'jcastro@gmail.com',    '4556-8978', 'https://img2.rtve.es/i/?w=1600&i=1677587980597.jpg',true),
-(2,'rebeca','$2a$10$GkEj.ZzmQa/aEfDmtLIh3udIH5fMphx/35d0EYeqZL5uzgCJ0lQRi','Rebeca',  'Contreras Mora', 'acontreras@gmail.com', '5456-8789','https://media.licdn.com/dms/image/v2/C5603AQGwjJ5ht4bWXQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1661476259292?e=2147483647&v=beta&t=9_i5zTdqHRMSXlb9H4TuWkWeRGQXmaZLjxkBlWsg2lg',true),
-(3,'pedro','$2a$10$koGR7eS22Pv5KdaVJKDcge04ZB53iMiw76.UjHPY.XyVYlYqXnPbO','Pedro', 'Mena Loria',     'lmena@gmail.com',      '7898-8936','https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Eduardo_de_Pedro_2019.jpg/480px-Eduardo_de_Pedro_2019.jpg?20200109230854',true);
+(1,'admin','$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.','Administrador', 'American Shop',    'americanShop02@gmail.com',    '4556-8978', 'https://img2.rtve.es/i/?w=1600&i=1677587980597.jpg',true),
+(2,'user','$2a$10$GkEj.ZzmQa/aEfDmtLIh3udIH5fMphx/35d0EYeqZL5uzgCJ0lQRi','usuario',  'American Shop', 'usuarioPrueba@gmail.com', '5456-8789','https://media.licdn.com/dms/image/v2/C5603AQGwjJ5ht4bWXQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1661476259292?e=2147483647&v=beta&t=9_i5zTdqHRMSXlb9H4TuWkWeRGQXmaZLjxkBlWsg2lg',true);
 
 
 
@@ -116,28 +115,28 @@ INSERT INTO producto (id_producto,id_categoria,descripcion,detalle,precio,existe
 INSERT INTO factura (id_factura,id_usuario,fecha,total,estado) VALUES
 (1,1,'2024-06-05',211560,2),
 (2,2,'2024-06-07',554340,2),
-(3,3,'2024-08-07',871000,2),
+(3,2,'2024-08-07',871000,2),
 (4,1,'2024-08-15',244140,1),
 (5,2,'2024-09-17',414800,1),
-(6,3,'2024-09-21',420000,1);
+(6,2,'2024-09-21',420000,1);
 
 INSERT INTO venta (id_venta,id_factura,id_producto,precio,cantidad) values
 (1,1,5,45000,3),
 (2,1,9,15780,2),
 (3,1,10,15000,3),
 (4,2,5,45000,1),
-(5,2,14,154000,3),
+(5,2,12,154000,3),
 (6,2,9,15780,3),
-(7,3,14,154000,1),
+(7,3,12,154000,1),
 (8,3,6,57000,1),
-(9,3,15,330000,2),
+(9,3,12,330000,2),
 (10,1,6,57000,2),
 (11,1,8,27600,3),
 (12,1,9,15780,3),
 (13,2,8,27600,3),
-(14,2,14,154000,2),
+(14,2,12,154000,2),
 (15,2,3,24000,1),
-(16,3,15,330000,1),
+(16,3,12,330000,1),
 (17,3,12,45000,1),
 (18,3,10,15000,3);
 
@@ -146,7 +145,7 @@ create table role (
   PRIMARY KEY (rol)  
 );
 
-insert into role (rol) values ('ADMIN'), ('VENDEDOR'), ('USER');
+insert into role (rol) values ('ADMIN'), ('USUARIO'), ('USER');
 
 create table rol (
   id_rol INT NOT NULL AUTO_INCREMENT,
@@ -158,9 +157,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
 insert into rol (id_rol, nombre, id_usuario) values
- (1,'ADMIN',1), (2,'VENDEDOR',1), (3,'USER',1),
- (4,'VENDEDOR',2), (5,'USER',2),
- (6,'USER',3);
+ (1,'ADMIN',1), (2,'USUARIO',1), (3,'USER',1),
+ (4,'USUARIO',2), (5,'USER',2),
+ (6,'USER',2);
 
 
 CREATE TABLE ruta (
@@ -171,7 +170,8 @@ CREATE TABLE ruta (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-INSERT INTO ruta (patron, rol_name) VALUES 
+INSERT INTO ruta (patron, rol_name) VALUES
+('/', 'ADMIN'),
 ('/producto/nuevo', 'ADMIN'),
 ('/producto/guardar', 'ADMIN'),
 ('/producto/modificar/**', 'ADMIN'),
@@ -185,11 +185,12 @@ INSERT INTO ruta (patron, rol_name) VALUES
 ('/role/**', 'ADMIN'),
 ('/usuario_role/**', 'ADMIN'),
 ('/ruta/**', 'ADMIN'),
-('/producto/listado', 'VENDEDOR'),
-('/categoria/listado', 'VENDEDOR'),
-('/pruebas/**', 'VENDEDOR'),
-('/reportes/**', 'VENDEDOR'),
-('/facturar/carrito', 'USER'),
+('/informacion/listado', 'USUARIO'),
+('/perfil/listado', 'USUARIO'),
+('/redes/listado', 'USUARIO'),
+('/producto/listado', 'USUARIO'),
+('/categoria/listado', 'USUARIO'),
+('/pruebas/**', 'USUARIO'),
 ('/payment/**', 'USER');
 
 CREATE TABLE ruta_permit (
@@ -206,6 +207,7 @@ INSERT INTO ruta_permit (patron) VALUES
 ('/carrito/**'),
 ('/registro/**'),
 ('/js/**'),
+('/fav/**'),
 ('/webjars/**');
 
 CREATE TABLE constante (

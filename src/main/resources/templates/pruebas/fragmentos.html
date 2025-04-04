@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
         <title>American Shop</title>
         <meta charset="UTF-8"/>        
@@ -12,7 +13,7 @@
             <div class="row p-3">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active"  href="/pruebas/listado">Todas los productos</a>
+                        <a class="nav-link active"  href="/pruebas/listado">Todos los productos</a>
                     </li>
                     <li th:each="c : ${categorias}"
                         class="nav-item">

@@ -35,11 +35,21 @@ public class PruebasController {
     }
 
     @GetMapping("/listado/{idCategoria}")
-    public String listado(Model model,Categoria categoria) {
-        categoria=categoriaService.getCategoria(categoria);
-        model.addAttribute("productos",categoria.getProductos());
+    public String listado(Model model, Categoria categoria) {
+        categoria = categoriaService.getCategoria(categoria);
+        model.addAttribute("productos", categoria.getProductos());
         var categorias = categoriaService.getCategorias(false);
         model.addAttribute("categorias", categorias);
+
+        return "/pruebas/listado";
+    }
+
+    @PostMapping("/query1")
+    public String query4(@RequestParam("descripcion") String descripcion,
+            Model model) {
+        var lista = productoService.consultaJPQLdescripcion(descripcion);
+        model.addAttribute("productos", lista);
+        model.addAttribute("descripcion", descripcion);
 
         return "/pruebas/listado";
     }

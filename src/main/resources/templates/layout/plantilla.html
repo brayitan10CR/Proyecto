@@ -20,48 +20,135 @@
         <header th:fragment="header" class="header">
             <nav class="navbar navbar-expand-sm navbar-dark bg-primary p-4">
                 <div class="container">
-                    <a th:href="@{/}" class="navbar-brand"><i class="fas fa-cog"></i>Home</a>
+                    <a th:href="@{/}" class="navbar-brand"><i><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmc9ph4JZFST_CPm-UUVEYDId2qJLZU-S4kA&s" alt="Logo" class="img-fluid rounded-circle mb-1" style="width: 70px;"/></i> Home</a>
                     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    <form method="post"
+                          th:action='@{/pruebas/query1}'
+                          class='place col-10'>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="text-white">Buscar</label>
+                                <input type="text" 
+                                       class="form-control"
+                                       aria-describedby="passwordHelpBlock"
+                                       th:value="${descripcion}"
+                                       name="descripcion"
+                                       />
+                            </div>
+                        </div>
+                    </form>
+
+
                 </div>
+                <ul sec:authorize="hasRole('ROLE_ADMIN')"
+                    class="navbar-nav">
+                    <li class="nav-item px-2 "><a class="nav-link text-white" th:href="@{/categoria/listado}">Categorias</a></li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')"
+                        class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" 
+                           data-bs-toggle="dropdown" 
+                           href="#" 
+                           role="button" 
+                           aria-expanded="false">Admin</a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item text-white" th:href="@{/usuario/listado}">Usuarios</a></li>                                    
+                        </ul>
+                    </li>
+                </ul>
+
+                <button class='btn btn-primary'>
+                    <i class='fas fa-cart-arrow-down'></i>
+                </button>
+
+                <ul sec:authorize='!isAuthenticated()'
+                    class='navbar-nav'>
+                    <li class='nav-item px-2 my-auto'>
+                        <a class='nav-menu-link nav-link'
+                           th:href='@{/login}'>
+                            <i class='fas fa-sign-in-alt'></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul sec:authorize='isAuthenticated()'
+                    class='navbar-nav'>
+                    <li class='nav-item px-2 my-auto text-white'>
+                        <form method="post"
+                              th:action='@{/logout}'>
+                            <button class='btn btn-dark'>
+                                <i class='fas fa-sign-out-alt'></i>
+                            </button>
+                        </form>
+
+                    </li>
+                </ul>
+
             </nav>
         </header>
 
 
-        <section th:fragment="productos" >
-            <div class="card position-relative" style="width: 18rem;">
-                <img src="https://multienviosexpress.com/wp-content/uploads/2022/05/compras-online-1200x640.jpg" class="card-img-top" alt="...."/>
-                <a href="#" class="btn btn-primary position-absolute top-50 start-50 translate-middle" >productos vendidos</a>
+        <section th:fragment="segmentos" >
+            <div class="container mt-4">
+                <!-- Sección de contenido -->
+                <div class="row mt-4">
+                    <!-- Productos más vendidos -->
+                    <div class="col-md-6">
+                        <div class="position-relative">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiEKC0rnZCxznFup5QrhF7nQa3xV8NjksMkA&s" class="w-100"/>
+                            <a href="#" class="btn btn-primary position-absolute top-50 start-50 translate-middle" th:href="@{/producto/listado}">
+                                Productos
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Ubicación y Redes Sociales -->
+                    <div class="col-md-3">
+                        <div class="card p-3 text-center">
+                            <img src="https://mundos-virtuales.com/wp-content/uploads/2022/08/mapa.png" class="w-100">
+                                <a href="#" th:href="@{/informacion/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Ubicanos</a>
+                        </div>
+                        <div class="card p-3 text-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Social_media_collection_2020s.png/640px-Social_media_collection_2020s.png" class="w-100">
+                                <a href="#" th:href="@{/redes/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Redes Sociales</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categorías -->
+                <div class="row mt-4">
+                    <div class="col-12 position-relative">
+                        <img src="https://multienviosexpress.com/wp-content/uploads/2022/05/compras-online-1200x640.jpg" class="w-100"/>
+                        <a href="#" class="btn btn-primary position-absolute top-50 start-50 translate-middle" th:href="@{/pruebas/listado}">
+                            Categorías
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Descuentos y Horario -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="position-relative">
+                            <img src="https://img.freepik.com/foto-gratis/fondo-gris-liso-alta-calidad_53876-124606.jpg" class="w-100">
+                                <a href="#" class="btn btn-light position-absolute top-50 start-50 translate-middle">
+                                    Descuentos
+                                </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 text-center">                            
+                            <img src="https://laeconsulting.net/wp-content/uploads/2019/05/ico_registro_horario_grande.png" class="w-100">
+                                <a href="#" th:href="@{/informacion/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Horario</a>
+                        </div>
+                        <div class="card text-center p-3">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3736/3736502.png" class="w-100">
+                                <a href="#" th:href="@{/perfil/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Perfil</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </section>
-
-        <section th:fragment="redes" >
-            <div class="card" style="width: 18rem;">
-                <a href="#" class="btn btn-primary" th:href="@{/redes/listado}">Redes Sociales</a>
-            </div>
-
-        </section>
-
-
-        <section th:fragment="categoria" >
-            <div class="card position-relative top-50 start-50 translate-middle" style="width: 18rem;">
-                <img src="https://www.idiomasparaninos.com/images/es/ropa.png" class="card-img-top" alt="...."/>
-                <a href="#" class="btn btn-primary position-absolute top-50 start-50 translate-middle" th:href="@{/pruebas/listado}">Categorias</a>
-            </div>
-
-        </section>
-
-        <section th:fragment="informacion" >
-            <div class="card" style="width: 18rem;">
-                <img src="https://static.vecteezy.com/system/resources/previews/006/445/961/non_2x/store-location-black-glyph-icon-physical-shop-position-website-information-market-address-online-shopping-silhouette-symbol-on-white-space-solid-pictogram-isolated-illustration-vector.jpg" class="card-img-top" alt="...."/>
-                <a href="#" class="btn btn-primary" th:href="rede.html">Informacion de la tienda</a>
-            </div>
-
-        </section>
-
-
 
 
 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>American Shop</title>
+        <meta charset="UTF-8"/>        
+
+    </head>
+    <body>
+
+        <!-- 2 Sección para mostrar los productos en tarjetas -->
+
+
+        <section th:fragment="perfiles" class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <div class="card p-3 mb-3" style="background-color: #4a79d7; color: white;">
+                        <h5>Perfil</h5>
+                    </div>
+                    <div class="mb-3">
+                        <img th:src='@{${session.usuarioImagen}}'
+                             alt='...'
+                             height='100'
+                             class='rounded-circle'/>                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <h6>Mi información</h6>
+
+                        <div class="mb-2">
+                            <label class="form-label">Nombre:</label>
+                            <p>User</p>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">Usuario:</label>
+                            <p>user</p>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">Correo:</label>
+                            <p>americanShop02@gmail.com</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <h6>Método de pago</h6>                    </div>
+                </div>
+            </div>
+
+            <!-- Preguntas Frecuentes -->
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-6 text-center">
+                    <button class="btn btn-secondary">Preguntas frecuentes</button>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </body>
+</html>

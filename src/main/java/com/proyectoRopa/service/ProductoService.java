@@ -45,4 +45,11 @@ public class ProductoService {
         //si el idproducto no tiene valor.. se inserta un registro con la informacion de la producto
         productoRepository.save(producto);
     }
+    
+        //se crean los metodos para un  CRUD Create Read Update Delete
+    @Transactional(readOnly=true)
+    public List<Producto> consultaJPQLdescripcion(String descripcion){
+
+        return productoRepository.consultaJPQLdescripcion(descripcion);
+    }
 }
