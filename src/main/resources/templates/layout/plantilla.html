@@ -92,67 +92,70 @@
         </header>
 
 
-        <section th:fragment="segmentos" >
-            <div class="container mt-4">
-                <!-- Sección de contenido -->
-                <div class="row mt-4">
-                    <!-- Productos más vendidos -->
-                    <div class="col-md-6">
-                        <div class="position-relative">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiEKC0rnZCxznFup5QrhF7nQa3xV8NjksMkA&s" class="w-100"/>
-                            <a href="#" class="btn btn-primary position-absolute top-50 start-50 translate-middle" th:href="@{/producto/listado}">
-                                Productos
-                            </a>
+        <section th:fragment="segmentos">
+            <div class="container mt-5">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                    <!-- Producto -->
+                    <div class="col">
+                        <div class="card h-100 position-relative">
+                            <img src="https://images.vexels.com/media/users/3/142647/isolated/preview/7975c8713e6cd70ff26097efbbebdbd1-ropa-de-camiseta.png" class="card-img-top img-fluid">
+                                <a th:href="@{/producto/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Productos</a>
                         </div>
                     </div>
 
-                    <!-- Ubicación y Redes Sociales -->
-                    <div class="col-md-3">
-                        <div class="card p-3 text-center">
-                            <img src="https://mundos-virtuales.com/wp-content/uploads/2022/08/mapa.png" class="w-100">
-                                <a href="#" th:href="@{/informacion/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Ubicanos</a>
-                        </div>
-                        <div class="card p-3 text-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Social_media_collection_2020s.png/640px-Social_media_collection_2020s.png" class="w-100">
-                                <a href="#" th:href="@{/redes/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Redes Sociales</a>
+                    <!-- Ubicanos -->
+                    <div class="col">
+                        <div class="card h-100 position-relative">
+                            <img src="https://images.icon-icons.com/2073/PNG/512/location_map_twitter_icon_127126.png" class="card-img-top img-fluid">
+                                <a th:href="@{/informacion/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Ubícanos</a>
                         </div>
                     </div>
-                </div>
 
-                <!-- Categorías -->
-                <div class="row mt-4">
-                    <div class="col-12 position-relative">
-                        <img src="https://multienviosexpress.com/wp-content/uploads/2022/05/compras-online-1200x640.jpg" class="w-100"/>
-                        <a href="#" class="btn btn-primary position-absolute top-50 start-50 translate-middle" th:href="@{/pruebas/listado}">
-                            Categorías
-                        </a>
+                    <!-- Redes Sociales -->
+                    <div class="col">
+                        <div class="card h-100 position-relative">
+                            <img src="https://img.freepik.com/vector-gratis/conjunto-logotipos-redes-sociales-3d-nuevo-logotipo-x_78370-3650.jpg?semt=ais_hybrid&w=740" class="card-img-top img-fluid">
+                                <a th:href="@{/redes/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Redes Sociales</a>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Descuentos y Horario -->
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="position-relative">
-                            <img src="https://tus-descuentos.es/images/logo-tus-descuentos.png" class="w-100">
-                                <a href="#" th:href="@{/descuentos/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">
-                                    Descuentos
-                                </a>
+                    <!-- Categorías -->
+                    <div class="col">
+                        <div class="card h-100 position-relative">
+                            <img src="https://us.123rf.com/450wm/brisker/brisker1605/brisker160500027/58489983-16-iconos-de-diferentes-categor%C3%ADas-de-productos-para-tiendas-online.jpg" class="card-img-top img-fluid">
+                                <a th:href="@{/pruebas/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Categorías</a>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card p-3 text-center">                            
-                            <img src="https://laeconsulting.net/wp-content/uploads/2019/05/ico_registro_horario_grande.png" class="w-100">
-                                <a href="#" th:href="@{/informacion/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Horario</a>
-                        </div>
-                        <div class="card text-center p-3">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3736/3736502.png" class="w-100">
-                                <a href="#" th:href="@{/perfil/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Perfil</a>
+
+                    <!-- Descuentos -->
+                    <div class="col">
+                        <div class="card h-100 position-relative">
+                            <img src="https://cdn-icons-png.freepik.com/512/10680/10680634.png" class="card-img-top img-fluid">
+                                <a th:href="@{/descuentos/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Descuentos</a>
                         </div>
                     </div>
+
+                    <!-- Horario -->
+                    <div class="col">
+                        <div class="card h-100 position-relative">
+                            <img src="https://images.vexels.com/media/users/3/151641/isolated/preview/4df6c21a932dc60b655649a55a602010-ilustracion-de-vector-de-reloj.png" class="card-img-top img-fluid">
+                                <a th:href="@{/informacion/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Horario</a>
+                        </div>
+                    </div>
+
+                    <!-- Perfil -->
+                    <div class="col mx-auto">
+                        <div class="card h-100 position-relative">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3736/3736502.png" class="card-img-top img-fluid">
+                                <a th:href="@{/perfil/listado}" class="btn btn-primary position-absolute top-50 start-50 translate-middle">Perfil</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
         </section>
+
 
 
 
