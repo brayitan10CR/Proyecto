@@ -22,7 +22,8 @@
                         <img th:src='@{${session.usuarioImagen}}'
                              alt='...'
                              height='100'
-                             class='rounded-circle'/>                    </div>
+                             class='rounded-circle'/>              
+                    </div>
                 </div>
             </div>
 
@@ -30,20 +31,26 @@
                 <div class="col-md-6">
                     <div class="card p-3">
                         <h6>Mi información</h6>
+                        <h6>------------------------------------------------</h6>
 
                         <div class="mb-2">
                             <label class="form-label">Nombre:</label>
-                            <p>User</p>
+                            <p><span th:text="${usuario.nombre}"></span></p>
                         </div>
 
                         <div class="mb-2">
                             <label class="form-label">Usuario:</label>
-                            <p>users</p>
+                            <p><span th:text="${usuario.username}"></span></p>
                         </div>
 
                         <div class="mb-2">
                             <label class="form-label">Correo:</label>
-                            <p>americanShop02@gmail.com</p>
+                            <p><span th:text="${usuario.correo}"></span></p>
+                        </div>
+
+                        <div class="mb-2">
+                            <label class="form-label">Telefono:</label>
+                            <p><span th:text="${usuario.telefono}"></span></p>
                         </div>
 
                     </div>
@@ -54,18 +61,25 @@
             <div class="row justify-content-center mt-3">
                 <div class="col-md-6">
                     <div class="card p-3">
-                        <h6>Método de pago</h6>                    </div>
+                        <h6>Método de pago:</h6> 
+                        <label class="form-label">Tarjeta de credito</label>
+                    </div>
                 </div>
             </div>
 
             <!-- Preguntas Frecuentes -->
             <div class="row justify-content-center mt-3">
                 <div class="col-md-6 text-center">
-                    <button class="btn btn-secondary">Preguntas frecuentes</button>
+                    <a href="#" class="btn btn-secondary" th:href="@{/preguntas/listado}">Preguntas frecuentes</a>
                 </div>
             </div>
         </section>
 
+
+        <footer th:fragment="footer" class="p-2 mt-5 bg-primary text-white" style="position: absolute; bottom: 0; width: 100%;">
+            <p class="text-center lead"> &COPY; Derechos reservados de la tienda </p>
+
+        </footer>
 
 
 

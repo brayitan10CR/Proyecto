@@ -9,11 +9,13 @@
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
-  
-        <section th:replace="~{pruebas/fragmentos :: tabs}"/>
-        <section th:replace="~{pruebas/fragmentos :: tarjetas}"/>
 
-        
-        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+        <section th:replace="~{preguntas/fragmentos :: ayuda}"/>
+        <section th:replace="~{preguntas/fragmentos :: enviar}"/>
+        <section th:replace="~{preguntas/fragmentos :: pregunta}"/>
+
+
+        <footer th:replace="~{perfil/fragmentos :: footer}"/>
     </body>
 </html>

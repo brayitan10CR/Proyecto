@@ -9,47 +9,55 @@
     </head>
     <body>
         <!-- 1 Sección para mostrar las categorias en tabs -->
-        <section th:fragment="tabs" >
-            <div class="row p-3">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active"  href="/pruebas/listado">Todas los productos</a>
-                    </li>
-                    <li th:each="c : ${categorias}"
-                        class="nav-item">
-                        <a class="nav-link" th:href="@{/pruebas/listado/}+${c.idCategoria}">
-                            [[${c.descripcion}]]</a>
-                    </li>
-                </ul>
-            </div>
-
-        </section>
-        <!-- 2 Sección para mostrar los productos en tarjetas -->
-        <section th:fragment="tarjetas" >
-            <div class="row row-cols-4 p-2">
-                <div th:each="p : ${productos}" 
-                    class="card" style="width: 18rem;">
-                    <figure>
-                        <img th:src="${p.rutaImagen}"
-                             height="200"
-                             class="card-img-top" alt="..."/>
-                        <figcaption class="d-flex justify-content-between">
-                            <span>¢[[${p.precio}]]</span>
-                             <span>([[${p.existencias}]])</span>
-                            
-                        </figcaption>                    
-                    </figure>
-                    
-                        <div class="card-body">
-                            <h5 class="card-title">[[${p.descripcion}]]</h5>
-                            <p class="card-text">[[${p.detalle}]]</p>
-                            <button class="btn btn-primary">
-                                <i class="fas fa-cart-arrow-down"></i>
-                            </button>
-                        </div>
+        <section th:fragment="descuentos">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card text-center p-3 mb-3" style="background-color: #6c757d; color: white;">
+                        <h5>Descuentos</h5>
+                    </div>
                 </div>
             </div>
-
         </section>
+
+        <!-- 2 Sección para mostrar los productos en tarjetas con estilo de descuentos -->
+        <section th:fragment="tarjetas">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
+                <div th:each="p : ${productos}" class="col">
+                    <div class="card h-100 shadow-sm border-0 position-relative">
+                        <!-- Badge de descuento -->
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge bg-warning text-dark fs-6 p-2 rounded-circle">50%</span>
+                        </div>
+
+                        <img th:src="${p.rutaImagen}" class="card-img-top p-3" style="height: 200px; object-fit: contain;" alt="Producto"/>
+
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold">[[${p.descripcion}]]</h5>
+                                <p class="text-muted small">[[${p.detalle}]]</p>
+
+                                <div class="mb-2">
+                                    <span class="text-primary fs-5 fw-bold">¢[[${p.precio/2}]]</span>
+                                    <span class="text-muted text-decoration-line-through small ms-2">¢[[${p.precio}]]</span>
+                                </div>
+
+                                <form>
+                                    <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
+                                    <input type="hidden" name="existencias" th:value="${p.existencias}" />
+                                    <span>([[${p.existencias}]])</span>
+                                    
+                                    <button type="button" onclick="addCart(this.form)" class="btn btn-primary">
+                                        <i class="fas fa-cart-arrow-down me-1"></i> Añadir
+                                    </button>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
     </body>
 </html>

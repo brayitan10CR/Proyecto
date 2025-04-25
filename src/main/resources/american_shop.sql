@@ -185,13 +185,19 @@ INSERT INTO ruta (patron, rol_name) VALUES
 ('/role/**', 'ADMIN'),
 ('/usuario_role/**', 'ADMIN'),
 ('/ruta/**', 'ADMIN'),
-('/informacion/listado', 'USUARIO'),
-('/perfil/listado', 'USUARIO'),
-('/redes/listado', 'USUARIO'),
-('/producto/listado', 'USUARIO'),
-('/categoria/listado', 'USUARIO'),
-('/pruebas/**', 'USUARIO'),
-('/payment/**', 'USER');
+('/informacion/listado', 'USER'),
+('/preguntas/listado', 'USER'),
+('/facturar/carrito', 'USER'),
+('/facturar/carrito-descuento', 'USER'),
+('/carrito/listado', 'USER'),
+('/descuentos/listado', 'USER'),
+('/perfil/listado', 'USER'),
+('/redes/listado', 'USER'),
+('/producto/listado', 'USER'),
+('/categoria/listado', 'USER'),
+('/pruebas/**', 'USER'),
+('/payment/**', 'USER'),
+('/reportes/**', 'USER');
 
 CREATE TABLE ruta_permit (
     id_ruta INT AUTO_INCREMENT NOT NULL,

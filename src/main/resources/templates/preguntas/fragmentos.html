@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>American Shop</title>
+        <meta charset="UTF-8"/>        
+
+    </head>
+    <body>
+
+        <section th:fragment="ayuda" class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <div class="card p-3 mb-3" style="background-color: #4a79d7; color: white;">
+                        <h5>Preguntas frecuentes</h5>
+                    </div>
+
+                    <h6 class="mb-6">¿En qué podemos ayudarte?</h6>
+
+                    <form method="post">
+                        <div class="form-group mb-3">
+                            <textarea class="form-control" name="pregunta" rows="10" placeholder="Digite su pregunta"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-around gap-2">                          
+                            <a th:href="@{/perfil/listado}" class="btn btn-outline-primary">Volver</a>
+                            <button type="reset" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Enviar
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <section th:fragment="pregunta" class="container mt-4">
+            <div class="d-flex flex-column gap-2">
+                <a th:href="@{/perfil/listado}" class="btn btn-primary">¿Como ver mi perfil?</a>
+                <a th:href="@{/pruebas/listado}" class="btn btn-primary">¿Como ver los productos?</a>
+                <a th:href="@{/redes/listado}" class="btn btn-primary">¿Como ver las redes sociales de la tienda?</a>
+            </div>
+
+        </section>
+
+        <section th:fragment="enviar">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Enviado con exito!</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Muchas gracias por informarnos de los problemas de la tienda, lo tendremos en cuenta para futuras actualizaciones
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer th:fragment="footer" class="p-2 mt-5 bg-primary text-white" style="position: absolute; bottom: 0; width: 100%;">
+            <p class="text-center lead"> &COPY; Derechos reservados de la tienda </p>
+
+        </footer>
+
+
+
+    </body>
+</html>
